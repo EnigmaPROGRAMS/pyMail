@@ -40,7 +40,7 @@ if not emails:
 else:
     print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
     send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
-    emails = set(list(', '.join(emails)))
+    emails = ', '.join(emails)
 
 def email(emails):
     msg = MIMEMultipart()
