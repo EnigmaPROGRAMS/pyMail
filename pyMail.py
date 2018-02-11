@@ -29,7 +29,7 @@ print "\n\n"
 
 # parsing the site data to find the emails
 emails = re.findall('[\w\.-]+@[\w\.-]+', site) # gathered emails
-if emails is None:
+if not emails:
     print "pyMail didn't find any emails :("
     time.sleep(2)
     leaving_message()
