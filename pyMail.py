@@ -3,19 +3,19 @@ import urllib2
 import re
 import smtplib
 import getpass
-import os
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 from bs4 import BeautifulSoup
 from sys import platform
+from os import system
 
 def clear_screen():
     if platform == "linux" or platform == "linux2" or platform == "darwin":
-        os.system('clear')
+        system('clear')
     elif platform == "win32":
-        os.system('cls')
+        system('cls')
 
 def leaving_message():
     clear_screen()
