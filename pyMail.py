@@ -18,6 +18,10 @@ print "|  |-'.-'  /   `--'   `--' `--`--'`--'`--'"
 print "`--'  `---'                               "
 print "\n"
 
+def leaving_message():
+    print "\n" * 50 + "thanks for using pyMail!"
+    quit()
+
 # lets gain some user info first
 local_email = raw_input("type in your google email: ")
 local_password = getpass.getpass(prompt="type in your google password: ")
@@ -37,10 +41,6 @@ else:
     print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
     send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
     emails = set(list(', '.join(emails)))
-
-def leaving_message():
-    print "\n" * 50 + "thanks for using pyMail!"
-    quit()
 
 def email(emails):
     msg = MIMEMultipart()
