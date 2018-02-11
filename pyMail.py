@@ -59,11 +59,20 @@ try:
     else:
         clear_screen()
         print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
+        dump_data_question = raw_input("would you like to dump these emails to 'emails.dat'? [Y|y] ")
         send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
-        emails = ', '.join(emails)
+
+    def dump_data(emails):
+        clear_screen()
+        emails = '\n'.join(emails)
+        data_file = open("emails.dat", "w")
+        data_file.write(emails)
+        data_file.close()
+        print "emails dumped to 'emails.dat'"
 
     def email(emails):
         clear_screen()
+        emails = ', '.join(emails)
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         
@@ -87,9 +96,13 @@ try:
         server.quit()
         leaving_message()
 
+    if dump_data_question == "Y" or dump_data_question == "y":
+        dump_data(emails)
+
     if send_email_question == "Y" or send_email_question == "y":
         email(emails)
     else:
         leaving_message()
+
 except KeyboardInterrupt:
     leaving_message()
