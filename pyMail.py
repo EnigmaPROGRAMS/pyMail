@@ -3,13 +3,26 @@ import urllib2
 import re
 import smtplib
 import getpass
+import os
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 from bs4 import BeautifulSoup
+from sys import platform
 
-print "\n" * 50
+def clear_screen():
+    if platform == "linux" or platform == "linux2" or platform == "darwin":
+        os.system('clear')
+    elif platform == "win32":
+        os.system('cls')
+
+def leaving_message():
+    clear_screen()
+    print "thanks for using pyMail!\n"
+    quit()
+
+clear_screen()
 print "               ,--.   ,--.        ,--.,--."
 print " ,---.,--. ,--.|   `.'   | ,--,--.`--'|  |"
 print "| .-. |\  '  / |  |'.'|  |' ,-.  |,--.|  | \x1B[3mcreated by james\x1B[23m"
@@ -17,10 +30,6 @@ print "| '-' ' \   '  |  |   |  |\ '-'  ||  ||  |"
 print "|  |-'.-'  /   `--'   `--' `--`--'`--'`--'"
 print "`--'  `---'                               "
 print "\n"
-
-def leaving_message():
-    print "\n" * 50 + "thanks for using pyMail!"
-    quit()
 
 # lets gain some user info first
 local_email = raw_input("type in your google email: ")
