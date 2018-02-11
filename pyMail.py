@@ -29,9 +29,14 @@ print "\n\n"
 
 # parsing the site data to find the emails
 emails = re.findall('[\w\.-]+@[\w\.-]+', site) # gathered emails
-print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
-send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
-emails = ', '.join(emails)
+if emails is None:
+    print "pyMail didn't find any emails :("
+    time.sleep(2)
+    leaving_message()
+else:
+    print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
+    send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
+    emails = set(list(', '.join(emails)))
 
 def leaving_message():
     print "\n" * 50 + "thanks for using pyMail!"
