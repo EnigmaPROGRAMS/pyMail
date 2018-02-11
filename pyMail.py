@@ -17,8 +17,6 @@ def clear_screen():
     elif platform == "win32":
         system('cls')
 
-clear_screen()
-
 def show_header():
     print "               ,--.   ,--.        ,--.,--."
     print " ,---.,--. ,--.|   `.'   | ,--,--.`--'|  |"
@@ -35,6 +33,7 @@ def leaving_message():
     quit()
 
 # lets gain some user info first
+clear_screen()
 show_header()
 local_email = raw_input("type in your google email: ")
 local_password = getpass.getpass(prompt="type in your google password: ")
