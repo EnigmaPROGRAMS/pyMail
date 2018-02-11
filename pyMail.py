@@ -68,7 +68,6 @@ try:
         data_file = open("emails.dat", "w")
         data_file.write(emails)
         data_file.close()
-        print "emails dumped to 'emails.dat'"
 
     def email(emails):
         clear_screen()
