@@ -32,7 +32,7 @@ site = BeautifulSoup(urllib2.urlopen(raw_input("enter a sitename to scrape: ")),
 print "\n\n"
 
 # parsing the site data to find the emails
-emails = re.findall('[\w\.-]+@[\w\.-]+', site) # gathered emails
+emails = list(set(re.findall('[\w\.-]+@[\w\.-]+', site))) # gathered emails
 if not emails:
     print "pyMail didn't find any emails :("
     time.sleep(2)
