@@ -16,8 +16,7 @@ def clear_screen():
         system('clear')
     elif platform == "win32":
         system('cls')
-
-def show_header():
+    
     print "               ,--.   ,--.        ,--.,--."
     print " ,---.,--. ,--.|   `.'   | ,--,--.`--'|  |"
     print "| .-. |\  '  / |  |'.'|  |' ,-.  |,--.|  | \x1B[3mcreated by james\x1B[23m"
@@ -28,13 +27,11 @@ def show_header():
 
 def leaving_message():
     clear_screen()
-    show_header()
     print "thanks for using pyMail!\n"
     quit()
 
 # lets gain some user info first
 clear_screen()
-show_header()
 local_email = raw_input("type in your google email: ")
 local_password = getpass.getpass(prompt="type in your google password: ")
 print "\n\n"
@@ -42,12 +39,10 @@ print "\n\n"
 # gather the site data
 try:
     clear_screen()
-    show_header()
     site = BeautifulSoup(urllib2.urlopen(raw_input("enter a sitename to scrape: ")), "html.parser").prettify()
     print "\n\n"
 except:
     clear_screen()
-    show_header()
     print "pyMail couldn't succeed in scraping the site - it may have scrape security"
     time.sleep(2)
     leaving_message()
@@ -56,20 +51,17 @@ except:
 emails = list(set(re.findall('[\w\.-]+@[\w\.-]+', site))) # gathered emails
 if not emails:
     clear_screen()
-    show_header()
     print "pyMail didn't find any emails :("
     time.sleep(2)
     leaving_message()
 else:
     clear_screen()
-    show_header()
     print 'pyMail found this: ' + ' | '.join(emails) + '\n\n'
     send_email_question = raw_input("would you like to send a mass email? [Y|y] ")
     emails = ', '.join(emails)
 
 def email(emails):
     clear_screen()
-    show_header()
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     
